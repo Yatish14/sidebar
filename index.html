@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Left Panel Example</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fontawesome-iconpicker/3.2.0/js/fontawesome-iconpicker.min.js" integrity="sha512-7dlzSK4Ulfm85ypS8/ya0xLf3NpXiML3s6HTLu4qDq7WiJWtLLyrXb9putdP3/1umwTmzIvhuu9EW7gHYSVtCQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      display: flex;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #left-panel {
+      width: 170px;
+      background-color: #f0f0f0;
+      padding: 20px 40px 20px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    #left-panel ul
+    {
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      align-items: center;
+      list-style: none;
+      height: 40vh;
+      text-align: center;
+    }
+    #left-panel ul li a
+    {
+      text-decoration: none;
+      color: black;
+      font-size: larger;
+    }
+    .a-div
+    {
+      width: 150px;
+      padding: 5px 10px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+    }
+    .a-div:hover
+    {
+      background-color: #6c6a6a;
+    }
+    #content {
+      flex-grow: 1;
+      padding: 20px;
+    }
+
+    #content h2 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="left-panel">
+    <ul>
+      <li>
+        <div class="a-div">
+          <a href="#home" class="nav-link"><i class="fa-solid fa-house"></i> Home</a>
+        </div>
+      </li>
+      <li>
+        <div class="a-div">
+          <a href="#contact" class="nav-link"><i class="fa-solid fa-address-book"></i> Contact</a>
+        </div>
+      </li>
+      <li>
+        <div class="a-div">
+          <a href="#information" class="nav-link"><i class="fa-solid fa-circle-info"></i> Information</a>
+        </div>
+      </li>
+      <li>
+        <div class="a-div">
+          <a href="#guide" class="nav-link"><i class="fa-solid fa-user"></i> Guide</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="content">
+    <h2 id="home">Home</h2>
+    <p>Welcome to Home Page</p>
+
+    <h2 id="contact">Contact</h2>
+    <p>Contact Us</p>
+
+    <h2 id="information">Information</h2>
+    <p>Information Page</p>
+
+    <h2 id="guide">Guide</h2>
+    <p>Guide</p>
+  </div>
+
+  <script>
+    var links = document.querySelectorAll('.nav-link');
+  
+    links.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var targetId = this.getAttribute('href').substring(1);
+        var targetElement = document.getElementById(targetId);
+        var contentSections = document.querySelectorAll('#content > h2, #content > p');
+        contentSections.forEach(function(section) {
+          section.style.display = 'none';
+        });
+        targetElement.style.display = 'block';
+        targetElement.nextElementSibling.style.display = 'block';
+      });
+    });
+  </script>
+  
+</body>
+</html>
